@@ -8,6 +8,9 @@ MAINTAINER ldg
 COPY app_runtime.jar app.jar
 
 # 环境
+ENV minx 256m
+ENV mins 256m
+ENV max 512m
 ENV envs prod
 ENV port 7035
 ENV JAVA_OPTS="\
@@ -32,11 +35,11 @@ ENV JAVA_OPTS="\
 -XX:NumberOfGCLogFiles=5 \
 -XX:GCLogFileSize=10M"
 
-
 # 执行 java -jar 命令 （CMD：在启动容器时才执行此行。RUN：构建镜像时就执行此行）
 # CMD java -jar /app.jar
 # CMD ["/opt/script/start.sh"]
-ENTRYPOINT ["java","-Xmx256m","-Xms256m","-Xmn256m","-Djava.security.egd=file:/dev/./urandom","-jar","app.jar"]
+ENTRYPOINT ["java","-Xmx${minx}","-Xms${mins}","-Xmn${max}","-Djava.security.egd=file:/dev/./urandom","-jar","app.jar"
+    ,"--server.port=$port","--spring.profiles.active=$envs","--spring.cloud.config.profile=$envs"]
 
 # 设置对外端口为
 EXPOSE ${port}
