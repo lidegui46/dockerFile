@@ -39,7 +39,7 @@ ENV JAVA_OPTS="\
 # CMD java -jar /app.jar
 # CMD ["/opt/script/start.sh"]
 # ENTRYPOINT ["java","-Xmx${minx}","-Xms${mins}","-Xmn${max}","-Djava.security.egd=file:/dev/./urandom","-jar","app.jar","--server.port=${port}","--spring.profiles.active=${envs}","--spring.cloud.config.profile=${envs}"]
-ENTRYPOINT ["java","-Xmx${minx}","-Xms${mins}","-Xmn${max}","-Djava.security.egd=file:/dev/./urandom","-jar","app.jar"]
+ENTRYPOINT ["java","-Xmx256m","-Xms256m","-Xmn512m","-Djava.security.egd=file:/dev/./urandom","-jar","app.jar"]
 
 # 设置对外端口为
 EXPOSE ${port}
