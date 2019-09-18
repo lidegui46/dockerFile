@@ -53,7 +53,7 @@ echo -e "maven package done...................."
 rm -rf "${runtimeDirectory}/app_runtime.jar"
 rm -rf "${runtimeDirectory}/Dockerfile"
 cp "${sourceDirectory}/${appName_dockerFile}/target/code_target.jar" "${runtimeDirectory}/app_runtime.jar"
-cp -rf "${sourceDirectory}/${appName_dockerFile}/src/document/Dockerfile" "${runtimeDirectory}/Dockerfile"
+cp -rf "${sourceDirectory}/${appName_dockerFile}/document/Dockerfile" "${runtimeDirectory}/Dockerfile"
 
 # 访问运行目录 
 cd "${runtimeDirectory}"

@@ -5,7 +5,7 @@ FROM adoptopenjdk/openjdk8
 MAINTAINER ldg
 
 # 从 linux 服务器拷贝 jar 到 镜像
-COPY /opt/app/runtime/app_runtime.jar app.jar
+COPY app_runtime.jar app.jar
 
 # 环境
 ENV envs prod
