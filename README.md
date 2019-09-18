@@ -12,9 +12,7 @@ local code -> git -> linux -> docker -> run
 
     build.finalName：构建后，jar 或 war 包的名称
     build.plugins.plugin.spring-boot-maven-plugin：使用“spring-boot-maven-plugin”重新打包
-        注：
-        <goal>repackage</goal>：向打包文件中添加 MainClass 和 Start-Class，以便通过“java -jar xxx.jar”运行时，找到对应的
-            main入口
+    build.plugins.pulgin.maven-deploy-plugin：在 MANIFEST.MF 文件中添加 MainClass 和 Start-Class ,以便通过“java -jar xxx.jar”
    
 # linux 服务器注意事项
 1、jdk

@@ -30,19 +30,11 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>1.5.3.RELEASE</version>
-                <!--
-                mavan 打包后，自动在 MANIFEST.MF 文件中添加 MainClass 和 Start-Class ,以便通过“java -jar xxx.jar”
-                运行时，找到 main 入口
-                -->
-                <!--<executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>-->
             </plugin>
-
+            <!--
+            mavan 打包后，自动在 MANIFEST.MF 文件中添加 MainClass 和 Start-Class ,以便通过“java -jar xxx.jar”
+            运行时，找到 main 入口
+            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>

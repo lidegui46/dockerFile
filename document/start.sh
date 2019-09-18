@@ -59,7 +59,9 @@ cp -rf "${sourceDirectory}/${appName_dockerFile}/document/Dockerfile" "${runtime
 cd "${runtimeDirectory}"
 
 # 删除原镜像
-docker rmi app_image &> /dev/null
+# 此方法会添加很多 none 空镜像
+# docker rmi app_image &> /dev/null
+docker rmi app_image
 echo -e "rmi old image done...................."
 
 # 构建新镜像
