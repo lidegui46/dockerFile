@@ -1,3 +1,6 @@
+# 参数说明
+# https://www.dwhd.org/20151202_113538.html
+
 # jdk 是一个已有的包含 jdk 的镜像
 FROM adoptopenjdk/openjdk8
 
