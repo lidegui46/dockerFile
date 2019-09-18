@@ -58,6 +58,9 @@ cp -rf "${sourceDirectory}/${appName_dockerFile}/document/Dockerfile" "${runtime
 # 访问运行目录 
 cd "${runtimeDirectory}"
 
+# 删除原容器
+docker rm -f app_container
+
 # 删除原镜像
 # 此方法会添加很多 none 空镜像
 # docker rmi app_image &> /dev/null
@@ -68,9 +71,6 @@ echo -e "rmi old image done...................."
 echo -e "build new image starting.............."
 docker build -t app_image .
 echo -e "build new image done.................."
-
-# 删除原容器
-docker rm -f app_container
 
 # 启动容器
 docker run -d -p 8090:8090 --name app_container app_image
