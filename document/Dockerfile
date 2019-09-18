@@ -38,8 +38,7 @@ ENV JAVA_OPTS="\
 # 执行 java -jar 命令 （CMD：在启动容器时才执行此行。RUN：构建镜像时就执行此行）
 # CMD java -jar /app.jar
 # CMD ["/opt/script/start.sh"]
-ENTRYPOINT ["java","-Xmx${minx}","-Xms${mins}","-Xmn${max}","-Djava.security.egd=file:/dev/./urandom","-jar","app.jar"
-    ,"--server.port=$port","--spring.profiles.active=$envs","--spring.cloud.config.profile=$envs"]
+ENTRYPOINT ["java","-Xmx${minx}","-Xms${mins}","-Xmn${max}","-Djava.security.egd=file:/dev/./urandom","-jar","app.jar","--server.port=${port}","--spring.profiles.active=${envs}","--spring.cloud.config.profile=${envs}"]
 
 # 设置对外端口为
 EXPOSE ${port}
