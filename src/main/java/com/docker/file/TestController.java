@@ -5,9 +5,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Author:  ldg
  * Date:    2019/9/17 22:13
@@ -18,28 +15,17 @@ import java.util.List;
 public class TestController {
     @GetMapping("get")
     public String get(@RequestParam(value = "arg", defaultValue = "") String arg) {
-        List<User> list = new ArrayList<>();
+        fullGC();
+        return "hello " + arg;
+    }
+
+    private void fullGC() {
+        byte[] newErdo = new byte[1024 * 1024 * 30];
+
         while (true) {
-            list.add(new User("aa_", 1));
+            // 触发 full gc
+            System.gc();
+            byte[] bytes = new byte[1024 * 1024 * 120];
         }
-        //return "hello " + arg;
-    }
-}
-
-class User {
-    private String name;
-    private Integer age;
-
-    public User(String name, Integer age) {
-        this.age = age;
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Integer getAge() {
-        return age;
     }
 }
