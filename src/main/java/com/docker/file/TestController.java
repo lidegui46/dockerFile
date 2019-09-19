@@ -13,19 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 @RestController
 public class TestController {
+    /**
+     * http://localhost:8090/test/get?arg=11
+     *
+     * @param arg
+     * @return
+     */
     @GetMapping("get")
     public String get(@RequestParam(value = "arg", defaultValue = "") String arg) {
-        fullGC();
         return "hello " + arg;
-    }
-
-    private void fullGC() {
-        byte[] newErdo = new byte[1024 * 1024 * 30];
-
-        while (true) {
-            // 触发 full gc
-            System.gc();
-            byte[] bytes = new byte[1024 * 1024 * 120];
-        }
     }
 }
