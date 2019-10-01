@@ -1,3 +1,7 @@
+0、文档及应用服务 
+
+    git url:  https://github.com/lidegui46/dockerFile.git
+
 一、部署应用
 
 	1、下载 JDK 镜像
