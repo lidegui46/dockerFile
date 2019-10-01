@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Author:  ldg
  * Date:    2019/9/17 22:13
@@ -20,7 +22,8 @@ public class TestController {
      * @return
      */
     @GetMapping("get")
-    public String get(@RequestParam(value = "arg", defaultValue = "") String arg) {
-        return "hello " + arg;
+    public String get(HttpServletRequest request, @RequestParam(value = "arg", defaultValue = "") String arg) {
+        System.out.println();
+        return "url:" +  request.getRequestURL().toString() + " hello " + arg;
     }
 }
