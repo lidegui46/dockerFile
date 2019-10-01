@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 /**
  * Author:  ldg
@@ -23,7 +25,28 @@ public class TestController {
      */
     @GetMapping("get")
     public String get(HttpServletRequest request, @RequestParam(value = "arg", defaultValue = "") String arg) {
-        System.out.println();
-        return "url:" +  request.getRequestURL().toString() + " hello " + arg;
+        System.out.println("localIP: " + getLocalIP() + "    url: " + request.getRequestURL().toString());
+        return "url:" + request.getRequestURL().toString() + " hello " + arg;
     }
-}
+
+
+    public static String getLocalIP() {
+        InetAddress addr = null;
+        try {
+            addr = InetAddress.getLocalHost();
+        } catch (UnknownHostException e) {
+            // TODO自动生成的catch块
+            e.printStackTrace();
+        }
+        byte[] ipAddr = addr.getAddress();
+        String ipAddrStr = "";
+        for (int i = 0; i < ipAddr.length; i++) {
+            if (i > 0) {
+                ipAddrStr += ".";
+            }
+            ipAddrStr += ipAddr[i] & 0xFF;
+        }
+        // System.out.println(ipAddrStr）;
+        return ipAddrStr;
+
+    }
