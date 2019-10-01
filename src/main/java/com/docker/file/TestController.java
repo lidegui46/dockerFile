@@ -26,7 +26,7 @@ public class TestController {
     @GetMapping("get")
     public String get(HttpServletRequest request, @RequestParam(value = "arg", defaultValue = "") String arg) {
         System.out.println("localIP: " + getLocalIP() + "    url: " + request.getRequestURL().toString());
-        return "url:" + request.getRequestURL().toString() + " hello " + arg;
+        return "localIP: " + getLocalIP() + "    url: " + request.getRequestURL().toString() + " hello " + arg;
     }
 
 
